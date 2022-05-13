@@ -5,8 +5,11 @@ let customerCurrency = document.getElementById("customerCurrency");
 let currentCurrencyIndexCustomer = 0;
 let currentCurrencyValueCustomer;
 let currencySymbolCustomer = "$";
-let history = []
 
+let historyArray = JSON.parse(localStorage.getItem('history'))
+let historyVal = document.getElementById('history')
+historyVal.innerHTML = JSON.parse(localStorage.getItem('history'))?.map(dataItem => dataItem)
+let history = []
 
 // let exchangeCurrency = document.getElementById("exchangeCurrency");
 // let currentCurrencyIndexExchnage = 0;
@@ -26,6 +29,7 @@ customerCurrency.addEventListener('change', function () {
 
 payButton.addEventListener('click', function () {
 
+    
     // if(currentCurrencyIndexExchnage === 0){
     //     currentCurrencyValueExchange = 1;
     // }else if(currentCurrencyIndexExchnage === 1){
@@ -69,7 +73,6 @@ payButton.addEventListener('click', function () {
     let billAmountVal = document.getElementById('billAmountVal')
     let cashGivenPrint = document.getElementById('cashGiven')
     let cashToBeGivenPrint = document.getElementById('cashToBeGiven')
-    let historyVal = document.getElementById('history')
     console.log(history)
 
     let cashToBeReturned = Math.floor((cashGiven - billAmount)*currentCurrencyValueCustomer)
@@ -114,9 +117,9 @@ payButton.addEventListener('click', function () {
         }
     }
     notesPrint.innerHTML =`The Total Amount is Been Returned in <br> <b> ${noteList} </b>` ;
-    history.push(noteList)
-    localStorage.setItem('history', history)
-    console.log(noteList[0])
+    history.push(`Total Bill Amount : ${billAmount} ${currencySymbolCustomer} <br> Cash Given Amount : ${cashGiven} <br> ${noteList}`)
+    localStorage.setItem('history',`${JSON.stringify(history)}`)
+    console.log(history)
 }
 
 })
