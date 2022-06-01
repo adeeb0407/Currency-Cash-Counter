@@ -51,7 +51,7 @@ payButton.addEventListener('click', function () {
     if(currentCurrencyIndexCustomer === 0){
         currentCurrencyValueCustomer = 77.36;
     }else if(currentCurrencyIndexCustomer === 1){
-        currentCurrencyValueCustomer = 80.38;
+        currentCurrencyValueCustomer = 0.60;
         currencySymbolCustomer = "¥"
     }else if(currentCurrencyIndexCustomer === 2){
         currentCurrencyValueCustomer = 252.07;
